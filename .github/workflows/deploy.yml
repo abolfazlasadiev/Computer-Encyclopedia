@@ -38,7 +38,7 @@ jobs:
 
       - name: Build Quartz
         working-directory: quartz
-        run: npx quartz build
+        run: npx quartz build -d ../content
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
