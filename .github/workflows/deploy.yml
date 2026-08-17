@@ -36,6 +36,9 @@ jobs:
         working-directory: quartz
         run: npm ci
 
+      - name: Copy Quartz config
+        run: cp quartz.config.yaml quartz/quartz.config.yaml
+
       - name: Build Quartz
         working-directory: quartz
         run: npx quartz build -d ../content
