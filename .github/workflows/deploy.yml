@@ -46,6 +46,15 @@ jobs:
         working-directory: quartz
         run: npx quartz build -d ../content
 
+      - name: Copy static content files
+        run: |
+          find content -type f ! -name '*.md' -print0 |
+            while IFS= read -r -d '' file; do
+              target="quartz/public/${file#content/}"
+              mkdir -p "$(dirname "$target")"
+              cp "$file" "$target"
+            done
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
